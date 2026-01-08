@@ -1,7 +1,5 @@
 package main;
 
-
-
 public class Book {
 	private int id;
 	private String title;
@@ -56,8 +54,5 @@ public class Book {
 	}
 	public toString printBookInfo() {
 		return getId(), getTitle(), getAuthor(), getISBN(), getPages(), getBorrowed();
-	};
-	
-	
-
+	}
 }
