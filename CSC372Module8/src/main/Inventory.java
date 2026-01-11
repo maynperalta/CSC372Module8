@@ -7,6 +7,12 @@ public class Inventory {
 	private ArrayList<Book> borrowedBooks = new ArrayList<Book>();
 // Add book to library 	
 	public void addBook(Book book) {
+		for (Book checkId : bookInventory) {
+			if(checkId.getId() == book.getId()) {
+				System.out.println("Book ID: " + book.getId() + "already in inventory.");
+				return;
+			}
+		}
 		bookInventory.add(book);
 		System.out.println("Book added to the library.");
 	}
@@ -22,13 +28,14 @@ public class Inventory {
 				return;
 			}
 		}
+// Message if book is being borrowed
 		for (Book book : borrowedBooks) {
 			if (book.getId() == id) {
 				System.out.println("Book ID: " + id + " is currently being borrowed.");
 				return;
 			}
 		}
-		System.out.println("Book ID: " + id + " not in library or may be borrowed.");
+		System.out.println("Book ID: " + id + " not in library.");
 	}
 // Return book to library with iterator
 	public void returnBook(int id) {
@@ -50,6 +57,7 @@ public class Inventory {
 			System.out.println("Library inventory appears to be empty.");
 			return;
 		}		
+		Collections.sort(bookInventory);
 		for (Book book : bookInventory) {
 			book.printBookInfo();
 		}
