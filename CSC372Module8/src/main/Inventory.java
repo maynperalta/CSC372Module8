@@ -3,32 +3,37 @@ package main;
 import java.util.*;
 
 public class Inventory {
-	ArrayList<Book> bookInventory = new ArrayList<Book>();
-	ArrayList<Book> borrowedBooks = new ArrayList<Book>();
+	private ArrayList<Book> bookInventory = new ArrayList<Book>();
+	private ArrayList<Book> borrowedBooks = new ArrayList<Book>();
 // Add book to library 	
 	public void addBook(Book book) {
 		bookInventory.add(book);
-		System.out.println("Book added to library inventory.");
+		System.out.println("Book added to the library.");
 	}
-// Borrow book from library	
+// Borrow book from library	with iterator
 	public void borrowBook(int id) {
-		for (Book book : bookInventory) {
+		Iterator<Book> iterator = bookInventory.iterator();
+		while (iterator.hasNext()) {
+			Book book = iterator.next();
 			if (book.getId() == id) {
-				bookInventory.remove(book);
+				iterator.remove();
 				borrowedBooks.add(book);
-				System.out.println("Book ID: " + id + " borrowed.");
+				System.out.println("Book successfully borrowed.");
 				return;
 			}
 		}
 		System.out.println("Book ID: " + id + " not in library or may be borrowed.");
 	}
-// Return book to library	
+// Return book to library with iterator
 	public void returnBook(int id) {
-		for (Book book : borrowedBooks) {
+		Iterator<Book> iterator = bookInventory.iterator();
+		while (iterator.hasNext()) {
+			Book book = iterator.next();
 			if (book.getId() == id) {
+				iterator.remove();
 				borrowedBooks.remove(book);
 				bookInventory.add(book);
-				System.out.println("Book ID: " + id + " returned to library.");
+				System.out.println("Book successfully returned.");
 				return;
 			}
 		}
@@ -55,7 +60,7 @@ public class Inventory {
 			}
 		}
 		if (!inInventory) {
-			System.out.println("Book not found in library.");
+			System.out.println("No matching book found.");
 		}
 	}
 }
