@@ -58,18 +58,23 @@ public class Main {
 						
 						bookInventory.addBook(new Book(id, title, author, isbn, pages));
 						break;
+						
 					case 2:
 						System.out.println("Enter ID of book to borrow: ");
-						bookInventory.borrowBook(scnr.nextInt());
+						int borrowId = scnr.nextInt();
+						scnr.nextLine();
+						bookInventory.borrowBook(borrowId);
 						break;
 					case 3:
 						System.out.println("Enter ID of book to return: ");
-						bookInventory.returnBook(scnr.nextInt());
+						int returnId = scnr.nextInt();
+						scnr.nextLine();
+						bookInventory.returnBook(returnId);
 						break;
 					case 4:
-						scnr.nextLine();
 						System.out.println("Enter title of book: ");
-						bookInventory.searchByTitle(scnr.nextLine());
+						String seachTitle = scnr.nextLine();
+						bookInventory.searchByTitle(seachTitle);
 						break;
 					case 5:
 						bookInventory.printAll();
