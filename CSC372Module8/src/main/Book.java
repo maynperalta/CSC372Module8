@@ -1,6 +1,6 @@
 package main;
 
-public class Book {
+public class Book implements Comparable<Book>{
 	private int id;
 	private String title;
 	private String author;
@@ -55,5 +55,9 @@ public class Book {
 // Method to print specific book's information
 	public void printBookInfo() {
 		System.out.println("ID: " + id + ", Title: " + title + ", Author: " + author + ", ISBN: " + isbn + ", Pages: " + pages);
+	}
+	@Override
+	public int compareTo(Book other) {
+		return this.title.compareToIgnoreCase(other.title);
 	}
 }

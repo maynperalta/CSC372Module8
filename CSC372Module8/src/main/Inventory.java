@@ -22,6 +22,12 @@ public class Inventory {
 				return;
 			}
 		}
+		for (Book book : borrowedBooks) {
+			if (book.getId() == id) {
+				System.out.println("Book ID: " + id + " is currently being borrowed.");
+				return;
+			}
+		}
 		System.out.println("Book ID: " + id + " not in library or may be borrowed.");
 	}
 // Return book to library with iterator

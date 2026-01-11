@@ -11,7 +11,7 @@ public class Main {
 // Switch statement menu with try/catch block for error handling		
 		while (userChoice != 6) {
 			try {
-				System.out.println("Welcome to the library program. Please make a selection: ");
+				System.out.println("\nWelcome to the library program. Please make a selection: ");
 				System.out.println("1. Add Book");
 				System.out.println("2. Borrow Book");
 				System.out.println("3. Return Book");
