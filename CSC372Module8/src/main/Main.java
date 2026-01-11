@@ -32,7 +32,6 @@ public class Main {
 							if(id > 0) break;
 							System.out.println("ID must be positive. Please try again");
 						}
-						
 						System.out.println("Enter book title: ");
 						String title = scnr.nextLine();
 						
@@ -46,7 +45,6 @@ public class Main {
 							if (Inventory.isbnValid(isbn)) break;
 							System.out.println("Invalid ISBN. Please enter 10 or 13 digit ISBN.");
 						}
-						
 						int pages;
 						while (true) {
 							System.out.println("Enter number of pages: ");
@@ -54,11 +52,9 @@ public class Main {
 							scnr.nextLine();
 							if (pages > 0) break;
 							System.out.println("Number of pages must be positive. Please try again.");
-						}
-						
+						}		
 						bookInventory.addBook(new Book(id, title, author, isbn, pages));
 						break;
-						
 					case 2:
 						System.out.println("Enter ID of book to borrow: ");
 						int borrowId = scnr.nextInt();
@@ -73,8 +69,8 @@ public class Main {
 						break;
 					case 4:
 						System.out.println("Enter title of book: ");
-						String seachTitle = scnr.nextLine();
-						bookInventory.searchByTitle(seachTitle);
+						String searchTitle = scnr.nextLine();
+						bookInventory.searchByTitle(searchTitle);
 						break;
 					case 5:
 						bookInventory.printAll();

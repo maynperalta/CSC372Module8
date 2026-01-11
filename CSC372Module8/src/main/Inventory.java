@@ -105,10 +105,16 @@ public class Inventory {
 			System.out.println("No matching book found.");
 		}
 	}
+	public int getMainInventoryCount() {
+		return bookInventory.size();
+	}
+	public int getBorrowedInventoryCount() {
+		return borrowedBooks.size();
+	}
 	
 	public static boolean isbnValid(String isbn) {
 		if (isbn == null) return false;
-		String straightIsbn = isbn.replace("-", "");
+		String straightIsbn = isbn.replace("[-\\s]", "");
 		return straightIsbn.matches("\\d{9}[\\dXx]|\\d{13}");
 		}
 }
