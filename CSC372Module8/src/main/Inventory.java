@@ -82,4 +82,10 @@ public class Inventory {
 			System.out.println("No matching book found.");
 		}
 	}
+	
+	public static boolean isbnValid(String isbn) {
+		if (isbn == null) return false;
+		String straightIsbn = isbn.replace("-", "");
+		return straightIsbn.matches("\\d{9}[\\dXx]|\\d{13}");
+		}
 }

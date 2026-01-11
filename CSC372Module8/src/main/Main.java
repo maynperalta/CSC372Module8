@@ -34,8 +34,13 @@ public class Main {
 						System.out.println("Enter book author: ");
 						String author = scnr.nextLine();
 						
-						System.out.println("Enter book ISBN: ");
-						String isbn = scnr.nextLine();
+						String isbn;
+						while (true) {
+							System.out.println("Enter book ISBN: ");
+							isbn = scnr.nextLine();
+							if (Inventory.isbnValid(isbn)) break;
+							System.out.println("Invalid ISBN. Please enter 10 or 13 digit ISBN.");
+						}
 						
 						System.out.println("Enter number of pages: ");
 						int pages = scnr.nextInt();
