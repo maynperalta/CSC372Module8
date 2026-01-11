@@ -24,9 +24,14 @@ public class Main {
 		
 				switch(userChoice) {
 					case 1:
-						System.out.println("Enter book ID: ");
-						int id = scnr.nextInt();
-						scnr.nextLine();
+						int id;
+						while (true) {
+							System.out.println("Enter book ID: ");	
+							id = scnr.nextInt();
+							scnr.nextLine();
+							if(id > 0) break;
+							System.out.println("ID must be positive. Please try again");
+						}
 						
 						System.out.println("Enter book title: ");
 						String title = scnr.nextLine();
@@ -42,8 +47,14 @@ public class Main {
 							System.out.println("Invalid ISBN. Please enter 10 or 13 digit ISBN.");
 						}
 						
-						System.out.println("Enter number of pages: ");
-						int pages = scnr.nextInt();
+						int pages;
+						while (true) {
+							System.out.println("Enter number of pages: ");
+							pages = scnr.nextInt();
+							scnr.nextLine();
+							if (pages > 0) break;
+							System.out.println("Number of pages must be positive. Please try again.");
+						}
 						
 						bookInventory.addBook(new Book(id, title, author, isbn, pages));
 						break;
@@ -58,7 +69,7 @@ public class Main {
 					case 4:
 						scnr.nextLine();
 						System.out.println("Enter title of book: ");
-						bookInventory.searchBookTitle(scnr.nextLine());
+						bookInventory.searchByTitle(scnr.nextLine());
 						break;
 					case 5:
 						bookInventory.printAll();
@@ -69,8 +80,11 @@ public class Main {
 					default: 
 						System.out.println("Please make a valid selection (1 - 6).");
 				}
-			} catch (Exception e) {
+			} catch (InputMismatchException e) {
 				System.out.println("Invalid input. Please try again.");
+				scnr.nextLine();
+			} catch (Exception e) {
+				System.out.println("An error has occurred: " + e.getMessage());
 				scnr.nextLine();
 			}
 		}
