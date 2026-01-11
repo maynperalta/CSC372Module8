@@ -26,12 +26,11 @@ public class Inventory {
 	}
 // Return book to library with iterator
 	public void returnBook(int id) {
-		Iterator<Book> iterator = bookInventory.iterator();
+		Iterator<Book> iterator = borrowedBooks.iterator();
 		while (iterator.hasNext()) {
 			Book book = iterator.next();
 			if (book.getId() == id) {
 				iterator.remove();
-				borrowedBooks.remove(book);
 				bookInventory.add(book);
 				System.out.println("Book successfully returned.");
 				return;
