@@ -71,7 +71,7 @@ public class Inventory {
 		System.out.println("\nLibrary Books: ");
 		System.out.printf("%-5s | %-30s | %-30s | %-20s | %-5s | %-10s\n", 
 				"ID", "Title", "Author", "ISBN", "Pages", "Status");
-		System.out.println("----------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------------------");
 		
 		for (Book book : allBooks) {
 			String status = borrowedBooks.contains(book) ? "Borrowed" : "Available";
@@ -85,7 +85,7 @@ public class Inventory {
 		System.out.println("\nSearch Results: ");
 		System.out.printf("%-5s | %-30s | %-30s | %-20s | %-5s | %-10s\n", 
 				"ID", "Title", "Author", "ISBN", "Pages", "Status");
-		System.out.println("----------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------------------");
 		
 		for (Book book : bookInventory) {
 			if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
