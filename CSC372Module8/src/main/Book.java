@@ -4,55 +4,56 @@ public class Book {
 	private int id;
 	private String title;
 	private String author;
-	private String ISBN;
+	private String isbn;
 	private int pages;
-	private boolean borrowed;
-	
-	Book(int id, String title, String author, String ISBN, int pages, boolean borrowed) {
+// Default constructor	
+	public Book() {
+	}
+// Parameterized constructor	
+	public Book(int id, String title, String author, String isbn, int pages) {
 		this.id = id;
 		this.title = title;
 		this.author = author;
-		this.ISBN = ISBN;
+		this.isbn = isbn;
 		this.pages = pages;
-		this.borrowed = borrowed;
 	}
-	public void setId(int newId) {
-		this.id = newId;
-	}
-	public void setTitle(String newTitle) {
-		this.title = newTitle;
-	}
-	public void setAuthor(String newAuthor) {
-		this.author = newAuthor;
-	}
-	public void setISBN(String newISBN) {
-		this.ISBN = newISBN;
-	}
-	public void setPages(int newPages) {
-		this.pages = newPages;
-	}
-	public void setBorrowed(boolean isBorrowed) {
-		this.borrowed = isBorrowed;
+// Setters and getters for id	
+	public void setId(int id) {
+		this.id = id;
 	}
 	public int getId() {
 		return id;
 	}
+// Setters and getters for title	
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public String getTitle() {
 		return title;
+	}
+// Setters and getters for author	
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	public String getAuthor() {
 		return author;
 	}
-	public String getISBN() {
-		return ISBN;
+// Setters and getters for ISBN	
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+	public String getIsbn() {
+		return isbn;
+	}
+// Setters and getters for number of pages	
+	public void setPages(int pages) {
+		this.pages = pages;
 	}
 	public int getPages() {
 		return pages;
 	}
-	public boolean getBorrowed() {
-		return borrowed;
-	}
-	public toString printBookInfo() {
-		return getId(), getTitle(), getAuthor(), getISBN(), getPages(), getBorrowed();
+// Method to print specific book's information
+	public void printBookInfo() {
+		System.out.println("ID: " + id + ", Title: " + title + ", Author: " + author + ", ISBN: " + isbn + ", Pages: " + pages);
 	}
 }
