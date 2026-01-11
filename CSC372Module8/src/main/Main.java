@@ -15,8 +15,8 @@ public class Main {
 				System.out.println("1. Add Book");
 				System.out.println("2. Borrow Book");
 				System.out.println("3. Return Book");
-				System.out.println("4. Print All Books");
-				System.out.println("5. Search Book By Title");
+				System.out.println("4. Search Book By Title");
+				System.out.println("5. Print All Books");				
 				System.out.println("6. Exit");
 				
 				userChoice = scnr.nextInt();
@@ -51,12 +51,13 @@ public class Main {
 						bookInventory.returnBook(scnr.nextInt());
 						break;
 					case 4:
-						bookInventory.printAll();
-						break;
-					case 5:
+						scnr.nextLine();
 						System.out.println("Enter title of book: ");
 						bookInventory.searchBookTitle(scnr.nextLine());
 						break;
+					case 5:
+						bookInventory.printAll();
+						break;						
 					case 6:
 						System.out.println("Exiting program. Goodbye.");
 						break;
