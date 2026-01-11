@@ -54,7 +54,8 @@ public class Book implements Comparable<Book>{
 	}
 // Method to print specific book's information
 	public void printBookInfo() {
-		System.out.println("ID: " + id + ", Title: " + title + ", Author: " + author + ", ISBN: " + isbn + ", Pages: " + pages);
+		System.out.printf("%-5d | %-30s | %-30s | %-20s | %-5d\n",
+				id, title, author, isbn, pages);
 	}
 	@Override
 	public int compareTo(Book other) {

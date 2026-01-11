@@ -59,22 +59,45 @@ public class Inventory {
 	}
 // Display all books currently in library inventory	
 	public void printAll() {
-		if (bookInventory.isEmpty()) {
-			System.out.println("Library inventory appears to be empty.");
+		if (bookInventory.isEmpty() && borrowedBooks.isEmpty()) {
+			System.out.println("Library and borrowed book list appear to be empty.");
 			return;
 		}		
-		Collections.sort(bookInventory);
-		for (Book book : bookInventory) {
-			book.printBookInfo();
+		ArrayList<Book> allBooks = new ArrayList<>();
+		allBooks.addAll(bookInventory);
+		allBooks.addAll(borrowedBooks);
+		
+		Collections.sort(allBooks);
+		System.out.println("\nLibrary Books: ");
+		System.out.printf("%-5s | %-30s | %-30s | %-20s | %-5s | %-10s\n", 
+				"ID", "Title", "Author", "ISBN", "Pages", "Status");
+		System.out.println("----------------------------------------------");
+		
+		for (Book book : allBooks) {
+			String status = borrowedBooks.contains(book) ? "Borrowed" : "Available";
+			System.out.printf("%-5s | %-30s | %-30s | %-20s | %-5s | %-10s\n",
+					book.getId(), book.getTitle(), book.getAuthor(), book.getIsbn(), book.getPages(), status);
 		}
 	}
 // Search for a book by title	
 	public void searchBookTitle(String title) {
 		boolean inInventory = false;
+		System.out.println("\nSearch Results: ");
+		System.out.printf("%-5s | %-30s | %-30s | %-20s | %-5s | %-10s\n", 
+				"ID", "Title", "Author", "ISBN", "Pages", "Status");
+		System.out.println("----------------------------------------------");
 		
 		for (Book book : bookInventory) {
 			if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
-				book.printBookInfo();
+				System.out.printf("%-5s | %-30s | %-30s | %-20s | %-5s | %-10s\n",
+						book.getId(), book.getTitle(), book.getAuthor(), book.getIsbn(), book.getPages(), "Available");
+				inInventory = true;
+			}
+		}
+		for (Book book : borrowedBooks) {
+			if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
+				System.out.printf("%-5s | %-30s | %-30s | %-20s | %-5s | %-10s\n",
+						book.getId(), book.getTitle(), book.getAuthor(), book.getIsbn(), book.getPages(), "Borrowed");
 				inInventory = true;
 			}
 		}
