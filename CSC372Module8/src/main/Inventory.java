@@ -9,7 +9,13 @@ public class Inventory {
 	public void addBook(Book book) {
 		for (Book checkId : bookInventory) {
 			if(checkId.getId() == book.getId()) {
-				System.out.println("Book ID: " + book.getId() + "already in inventory.");
+				System.out.println("Book ID: " + book.getId() + " already in inventory.");
+				return;
+			}
+		}
+		for(Book checkId : borrowedBooks) {
+			if(checkId.getId() == book.getId()) {
+				System.out.println("Book ID: " + book.getId() + " is currently being borrowed.");
 				return;
 			}
 		}
@@ -35,7 +41,7 @@ public class Inventory {
 				return;
 			}
 		}
-		System.out.println("Book ID: " + id + " not in library.");
+		System.out.println("Book ID: " + id + " is not in library.");
 	}
 // Return book to library with iterator
 	public void returnBook(int id) {
